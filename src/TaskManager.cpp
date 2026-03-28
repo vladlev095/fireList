@@ -1,10 +1,15 @@
 #include "TaskManager.h"
 
 TaskManager::TaskManager() {
-    std::ifstream f;
-    std::cout << "constructor\n";
-    /*
-    loads data.json into j file 
-    moves j into tasks
-    */
+    readFile();
+    m_Tasks = m_J;
+    std::cout << m_Tasks.size() << "\n";
+}
+
+void TaskManager::readFile() {
+    std::ifstream file("../data.json");
+    std::stringstream ss;
+    ss << file.rdbuf();
+    std::string fileContent = ss.str();
+    m_J = ordered_json::parse(ss);
 }

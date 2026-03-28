@@ -13,3 +13,14 @@
 
 хранить в таске вместо time_t timepoint chrono
 умеет редактировать дедлайн (через хроно)
+
+
+запуск:
+1 check the current list
+2 add new
+3 edit task
+4 remove task
+5 
+
+
+23/03/26 дописать from_json и to_json
