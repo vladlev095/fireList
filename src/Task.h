@@ -1,7 +1,13 @@
 #pragma once
 
-#include "TaskManager.h"
 #include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <nlohmann/json.hpp>
+
+using ordered_json = nlohmann::ordered_json;
 
 class Task {
 public:
