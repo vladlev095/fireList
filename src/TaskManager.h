@@ -14,6 +14,7 @@ public:
     TaskManager();
 
     void readFile();
+    void printTasks();
     void addTask(std::string name, int minutesForExec);
     void editTask(int id);
     void removeTask(int id);
@@ -21,5 +22,5 @@ public:
 private:
     int m_nextID = 0;
     std::vector<Task> m_Tasks;
-    ordered_json m_J;
+    ordered_json m_J; //move to application
 };

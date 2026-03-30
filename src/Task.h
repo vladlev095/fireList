@@ -24,6 +24,7 @@ public:
 
     friend void to_json(ordered_json& j, const Task& task);
     friend void from_json(const ordered_json& j, Task& task);
+    friend std::ostream& operator<<(std::ostream& os, const Task& task);
 
 private:
     int m_Id = 0;

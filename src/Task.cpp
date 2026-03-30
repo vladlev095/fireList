@@ -7,7 +7,10 @@ Task::Task(int& m_nextID, std::string name, int minutesForExec) {
     // m_ExpiredAt = expiredAt; // now() + minutesForExec
 }
 
-void to_json(ordered_json& j, const Task& task) { //namespace??
+void Task::setName(std::string name) { m_Name = name; }
+void Task::setStatus(bool isDone) { m_IsDone = isDone; }
+
+void to_json(ordered_json &j, const Task &task) {
     j = ordered_json{{"id", task.m_Id}, {"task", task.m_Name}, {"done", task.m_IsDone},
     {"created", task.m_CreatedAt}, {"expired", task.m_ExpiredAt}};
 }
@@ -20,5 +23,7 @@ void from_json(const ordered_json& j, Task& task) {
     j.at("expired").get_to(task.m_ExpiredAtStr);
 }
 
-void Task::setName(std::string name) { m_Name = name; }
-void Task::setStatus(bool isDone) { m_IsDone = isDone; }
+std::ostream& operator<<(std::ostream &os, const Task &task) {
+    os << "id: " << task.m_Id << "\n";
+    return os;
+}

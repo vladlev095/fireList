@@ -4,4 +4,5 @@
 
 int main() {
     TaskManager taskManagerI;
+    taskManagerI.printTasks();
 }
