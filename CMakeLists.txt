@@ -4,4 +4,4 @@ project(fireList)
 
 add_executable(fireList)
 
-target_sources(fireList PRIVATE src/main.cpp src/Task.cpp src/TaskManager.cpp)
+target_sources(fireList PRIVATE src/main.cpp src/Task.cpp src/TaskManager.cpp src/Application.cpp)

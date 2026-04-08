@@ -9,11 +9,11 @@
 
 using ordered_json = nlohmann::ordered_json;
 
-class TaskManager {
+class TaskManager { // make this class static with static funcs add remove and edit 
 public:
     TaskManager();
 
-    void readFile();
+    void setTasks(ordered_json& j);
     void printTasks();
     void addTask(std::string name, int minutesForExec);
     void editTask(int id);
@@ -22,5 +22,4 @@ public:
 private:
     int m_nextID = 0;
     std::vector<Task> m_Tasks;
-    ordered_json m_J; //move to application
 };
