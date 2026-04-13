@@ -15,7 +15,7 @@
     },
     {
         "id": 3,
-        "task": "a book",
+        "task": "read a book",
         "done": false,
         "created": "Wed Jan 17 03:33:20 2026\n",
         "expired": "Wed May 19 03:33:20 2026\n"

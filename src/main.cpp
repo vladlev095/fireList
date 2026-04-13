@@ -3,8 +3,8 @@
 #include "Application.h"
 
 int main() {
+    Application app;
     TaskManager tm;
-    Application app; //create tm in application class
-    app.createTasksList(tm);
+    tm.editTask(2);
     tm.printTasks();
 }

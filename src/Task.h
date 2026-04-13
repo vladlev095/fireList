@@ -13,10 +13,10 @@ public:
     Task(int& m_nextID, std::string name, int minutesForExec);
     void setName(std::string name);
     void setStatus(bool isDone);
-    void setDeadline(time_t expiredAt);
+    void setDeadline(int minutes);
+    int getID() { return m_Id; } // used in TM
 
     std::string getName() { return m_Name; }
-    int getID() { return m_Id; }
     time_t getCreatedAt() { return m_CreatedAt; }
     time_t getDeadline() { return m_ExpiredAt; }
 

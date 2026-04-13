@@ -9,6 +9,7 @@ Task::Task(int& m_nextID, std::string name, int minutesForExec) {
 
 void Task::setName(std::string name) { m_Name = name; }
 void Task::setStatus(bool isDone) { m_IsDone = isDone; }
+void Task::setDeadline(int minutes) { m_minutesForExec = minutes; }
 
 void to_json(ordered_json &j, const Task &task) {
     j = ordered_json{{"id", task.m_Id}, {"task", task.m_Name}, {"done", task.m_IsDone},
@@ -24,6 +25,7 @@ void from_json(const ordered_json& j, Task& task) {
 }
 
 std::ostream& operator<<(std::ostream &os, const Task &task) {
-    os << "id: " << task.m_Id << "\n";
+    os << "id: " << task.m_Id << "\ntask: " << task.m_Name << "\nstatus: " << task.m_IsDone << "\ncreated: "
+    << task.m_CreatedAt << "\nexpired: " << task.m_ExpiredAt << "\n";
     return os;
 }

@@ -1,10 +1,40 @@
 #include "TaskManager.h"
 
-TaskManager::TaskManager() { 
+TaskManager::TaskManager() {
+    createTasksList(); //creates a json obj from file and moves it into a vector of Task objects
 }
 
-void TaskManager::setTasks(ordered_json& j) {
-    m_Tasks = j;
+TaskManager::~TaskManager() {
+}
+
+void TaskManager::createTasksList() {
+    std::ifstream file("../data.json");
+    std::stringstream ss;
+    ss << file.rdbuf();
+    std::string fileContent = ss.str();
+    ordered_json m_J = ordered_json::parse(ss);
+    m_Tasks = m_J;
+    int id = m_Tasks.back().getID();
+    m_nextID = id;
+}
+
+void TaskManager::addTask(std::string name, int minutesForExec) {
+    Task task(m_nextID, name, minutesForExec);
+    m_Tasks.push_back(task);
+}
+
+void TaskManager::editTask(int id) {
+    std::string name;
+    bool isFound = false;
+    for(auto& t : m_Tasks) { //const?
+        if(t.getID() == id) {
+            std::cout << "set name: \n";
+            std::getline(std::cin, name);
+            t.setName(name);
+            isFound = true;
+        }
+    }
+    if(!isFound) { std::cout << "id not found!\n"; }
 }
 
 void TaskManager::printTasks() {
