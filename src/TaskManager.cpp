@@ -25,12 +25,17 @@ void TaskManager::addTask(std::string name, int minutesForExec) {
 
 void TaskManager::editTask(int id) {
     std::string name;
+    int minutesForExec;
     bool isFound = false;
-    for(auto& t : m_Tasks) { //const?
+    for(auto& t : m_Tasks) {
         if(t.getID() == id) {
             std::cout << "set name: \n";
             std::getline(std::cin, name);
             t.setName(name);
+            std::cout << "set timer (minutes): \n"; //if -1, 0 or a char?
+            std::getline(std::cin, name);
+            minutesForExec = std::stoi(name);
+            t.setDeadline(minutesForExec);
             isFound = true;
         }
     }
